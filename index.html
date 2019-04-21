@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Clock</title>
+    
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+    <style>
+         body{
+             background: url("background.jpg");
+             background-size: cover;
+
+
+         }
+        .clock{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            font-family: sans-serif;
+            color: #fff;
+            padding: 0px 5px 0px 5px;
+            margin-left: 20px;
+            transform: translate(-50%,-50%);
+            text-shadow: #F00;
+            border: 2px dashed;
+            font-size: 80px;
+
+          }
+    </style>
+</head>
+<body>
+<h1 align="center" style="color:#fff;font-family: sans-serif;margin-top: 80px" >Digital Clock </h1>
+<div id="cd" class="clock"></div>
+
+<script>
+    
+    function  Time() {
+
+        var date = new Date();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        var next = "AM";
+        if(h==0)
+        {
+            h=12;
+        }
+        if(h>12)
+        {
+            h= h-12;
+             next = "PM";
+        }
+        h = (h<10)? "0" +  h:  h;
+        m = (m <10)? "0" + m:  m;
+        s = (s<10)? "0" +  s : s;
+        var  time = h +":" + m +":" + s + " " + next;
+         document.getElementById("cd").innerText = time;
+         document.getElementById("cd").textContent = time;
+
+         setTimeout(Time ,1000);
+    }
+    Time();
+    
+    </script>
+
+</body>
+</html>
